@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Lab3App
 {
-    public abstract class Tool : Displayable
+    public abstract class Tool : Collectable
     {
         public abstract void DoAction();
-        
-        void Displayable.Display()
+
+        public override void AddMe(List<Collectable> list)
         {
-            Console.WriteLine($"Displaying {GetType().Name}");
+            base.AddMe(list);
+            DoAction();
         }
+        public abstract override void Display();
+
     }
 }

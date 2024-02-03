@@ -1,12 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace Lab3App
 {
-	internal class Axe : Tool
+	public class Axe : Tool
 	{
-        public override void DoAction()
+        public Axe(string name)
         {
-            Display();
+            description = name;
+        }
+
+        public override void AddMe(List<Collectable> list)
+        {
+            base.AddMe(list);
+        }
+        public override void DoAction()
+        { 
             Console.WriteLine("Axe is Used");
+        }
+
+        public override void Display()
+        {
+            Console.WriteLine("Axe " + this.description + " is displayed");
         }
     }
 }

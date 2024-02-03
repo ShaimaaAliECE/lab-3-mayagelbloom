@@ -2,36 +2,39 @@
 using System.Collections.Generic;
 namespace Lab3App
 {
-	public class Collectable : Displayable
+	public abstract class Collectable : Displayable
 	{
-		//Adding fields
-		private string Description { get; set; }
+		private string Description;
+		private CollectionBoard board = new CollectionBoard();
 
-        //Adding field of type CollectionBoard
-        private CollectionBoard Board;
-
-        public CollectionBoard Board
-        {
-            get { return board; }
-            set { board = value; }
-        }
-
-		public Collectable(string description)
+		public string description
 		{
-			Description = description;
+			get
+			{
+				return this.Description;
+			}
+			set
+			{
+				this.Description = value;
+			}
 		}
-		}
-		//Adding the current Collectable to a list
-		public void AddMe(List<Collectable> collectables)
+		public CollectionBoard Board
 		{
-		Console.WriteLine($"{Description} Collected, Congrats!!!!");
-		board.UpdateTotalScore(20);
-        Console.WriteLine($"Total Score is updated to: {board.TotalScore}");
-		collectables.Add(this);
+			get
+			{
+				return this.board;
+			}
+			set
+			{
+				this.board = value;
+			}
 		}
-	void Displayable.Display()
-	{
-        Console.WriteLine($"Displaying Collectable:{Description}");
-    }
+		public virtual void AddMe(List<Collectable> list)
+		{
+			list.Add(this);
+			Console.WriteLine(this.description + " Collected, Congrats!!!!");
+		}
+
+		public abstract void Display();
+	}
 }
-

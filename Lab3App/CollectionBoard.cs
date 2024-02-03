@@ -3,22 +3,31 @@ namespace Lab3App
 {
 	public class CollectionBoard
 	{
-		public int TotalScore { get; set; }
-		public int TotalValue { get; set; }
-		public CollectionBoard()
+		private static int TotalValue;
+		private static int TotalScore;
+
+		public int totalValue
 		{
-			TotalScore = 0;
-			TotalValue = 0;
+			get
+			{
+				return TotalValue;
+			}
+			set
+			{
+				TotalValue = value;
+			}
 		}
-		//Updating the total score and value
-		public void UpdateTotalScore(int score)
+		public int totalScore
 		{
-			TotalScore += score;
+			get
+			{
+				return TotalScore;
+			}
+			set
+			{
+				TotalScore = value;
+			}
 		}
-		public void UpdateTotalValue(int value)
-		{
-			TotalValue += value;
-		}
+
 	}
 }
-
